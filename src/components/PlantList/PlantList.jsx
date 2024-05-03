@@ -6,7 +6,6 @@ function PlantList() {
     const dispatch = useDispatch();
 
     const reduxState = useSelector(store => store);
-    console.log(reduxState);
 
     const fetchPlants = () => {
         dispatch({ type: 'FETCH_PLANTS' });
