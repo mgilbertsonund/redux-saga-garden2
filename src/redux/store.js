@@ -15,7 +15,7 @@ function* fetchPlants() {
 }
 function* postPlant(action) {
   try {
-    yield axios.post('/api/plants', action.payload.id);
+    yield axios.post('/api/plants', action.payload);
     yield put({ type: 'FETCH_PLANTS' });
   } catch (error) {
     console.log(error);
