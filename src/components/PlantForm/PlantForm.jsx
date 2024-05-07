@@ -30,7 +30,6 @@ const PlantForm = () => {
     return (
         <div>
             <h3>This is the form</h3>
-            {/* <pre>{JSON.stringify(newPlant)}</pre> */}
             <form onSubmit={addNewPlant}>
                 <input type='text' placeholder='Plant Name' value={newPlant.name} onChange={(event) => handleChange(event, 'name')} />
                 <input type='text' placeholder='Plant Kingdom' value={newPlant.kingdom} onChange={(event) => handleChange(event, 'kingdom')} />
