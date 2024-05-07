@@ -15,8 +15,17 @@ function* fetchPlants() {
 }
 function* postPlant(action) {
   try {
-    yield axios.post('/api/plants', action.payload);
+    yield axios.post('/api/plants', action.payload.id);
     yield put({ type: 'FETCH_PLANTS' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+function* deletePlant(action) {
+  plant = action.payload.id;
+  try {
+    yield axios.delete(`/api/plants/${plant}`);
+    yield put({ type: 'DELETE_PLANT' });
   } catch (error) {
     console.log(error);
   }
@@ -24,6 +33,7 @@ function* postPlant(action) {
 function* rootSaga() {
   yield takeEvery('FETCH_PLANTS', fetchPlants);
   yield takeEvery('ADD_PLANT', postPlant);
+  yield takeEvery('DELETE_PLANT', deletePlant);
 }
 const plantList = (state = [], action) => {
   switch (action.type) {

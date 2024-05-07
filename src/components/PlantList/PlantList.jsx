@@ -10,6 +10,11 @@ function PlantList() {
         dispatch({ type: 'FETCH_PLANTS' });
     }
 
+    const deletePlant = (plant) => {
+        dispatch({ type: 'DELETE_PLANT', payload: plant })
+        fetchPlants();
+    }
+
     useEffect(() => {
         fetchPlants();
     }, []); 
@@ -21,6 +26,7 @@ function PlantList() {
                     {Object.values(plants).map(plant => (
                         <li key={plant.id}>
                             {plant.name}
+                            <button onClick={() => deletePlant(plant)}>Delete</button>
                         </li>
                     ))}
                 </ul>
