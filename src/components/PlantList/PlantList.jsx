@@ -4,8 +4,7 @@ import { useDispatch, useSelector} from 'react-redux';
 
 function PlantList() {
     const dispatch = useDispatch();
-
-    const reduxState = useSelector(store => store);
+    const plants = useSelector(store => store.plantList);
 
     const fetchPlants = () => {
         dispatch({ type: 'FETCH_PLANTS' });
@@ -18,7 +17,13 @@ function PlantList() {
     return (
         <div>
             <h3>This is the plant list</h3>
-            <pre>{JSON.stringify(reduxState)}</pre>
+                <ul>
+                    {Object.values(plants).map(plant => (
+                        <li key={plant.id}>
+                            {plant.name}
+                        </li>
+                    ))}
+                </ul>
         </div>
     );
 }
