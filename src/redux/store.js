@@ -22,10 +22,9 @@ function* postPlant(action) {
   }
 }
 function* deletePlant(action) {
-  plant = action.payload.id;
+  const plantId = action.payload.id;
   try {
-    yield axios.delete(`/api/plants/${plant}`);
-    yield put({ type: 'DELETE_PLANT' });
+    yield axios.delete(`/api/plants/${plantId}`);
   } catch (error) {
     console.log(error);
   }

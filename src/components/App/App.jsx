@@ -1,6 +1,6 @@
 import React from 'react';
 import Garden from '../Garden/Garden.jsx';
-import PlantForm from '../PlantForm/PlantForm.jsx';
+import PlantDetails from '../PlantDetails/PlantDetails.jsx';
 import {
   BrowserRouter as Router,
   Switch,
@@ -25,10 +25,11 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Garden />
           </Route>
-          <Route path="/plant/:id">
+          <Route path="/plants/:id">
+            <PlantDetails />
           </Route>
         </Switch>
       </Router>
